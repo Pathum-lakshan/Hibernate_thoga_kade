@@ -7,5 +7,88 @@
 
 package lk.ijse.hibernate.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
 public class Customer {
+    @Id
+    private String customer_id;
+    private String customer_name;
+    private String customer_address;
+    private String customer_number;
+    @OneToMany(mappedBy = "order_customer")
+    private List<Order> orderList = new ArrayList<>();
+
+    public Customer() {
+    }
+
+    public Customer(String customer_id, String customer_name, String customer_address, String customer_number) {
+        this.customer_id = customer_id;
+        this.customer_name = customer_name;
+        this.customer_address = customer_address;
+        this.customer_number = customer_number;
+    }
+
+    public Customer(String customer_id, String customer_name, String customer_address, String customer_number, List<Order> orderList) {
+        this.customer_id = customer_id;
+        this.customer_name = customer_name;
+        this.customer_address = customer_address;
+        this.customer_number = customer_number;
+        this.orderList = orderList;
+    }
+
+    public String getCustomer_id() {
+        return customer_id;
+    }
+
+    public void setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
+    }
+
+    public String getCustomer_name() {
+        return customer_name;
+    }
+
+    public void setCustomer_name(String customer_name) {
+        this.customer_name = customer_name;
+    }
+
+    public String getCustomer_address() {
+        return customer_address;
+    }
+
+    public void setCustomer_address(String customer_address) {
+        this.customer_address = customer_address;
+    }
+
+    public String getCustomer_number() {
+        return customer_number;
+    }
+
+    public void setCustomer_number(String customer_number) {
+        this.customer_number = customer_number;
+    }
+
+    public List<Order> getOrderList() {
+        return orderList;
+    }
+
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "customer_id='" + customer_id + '\'' +
+                ", customer_name='" + customer_name + '\'' +
+                ", customer_address='" + customer_address + '\'' +
+                ", customer_number='" + customer_number + '\'' +
+                ", orderList=" + orderList +
+                '}';
+    }
 }
