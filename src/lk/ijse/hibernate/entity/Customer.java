@@ -21,7 +21,7 @@ public class Customer {
     private String customer_address;
     private String customer_number;
     @OneToMany(mappedBy = "order_customer")
-    private List<Order> orderList = new ArrayList<>();
+    private List<Orders> ordersList = new ArrayList<>();
 
     public Customer() {
     }
@@ -33,12 +33,12 @@ public class Customer {
         this.customer_number = customer_number;
     }
 
-    public Customer(String customer_id, String customer_name, String customer_address, String customer_number, List<Order> orderList) {
+    public Customer(String customer_id, String customer_name, String customer_address, String customer_number, List<Orders> ordersList) {
         this.customer_id = customer_id;
         this.customer_name = customer_name;
         this.customer_address = customer_address;
         this.customer_number = customer_number;
-        this.orderList = orderList;
+        this.ordersList = ordersList;
     }
 
     public String getCustomer_id() {
@@ -73,12 +73,12 @@ public class Customer {
         this.customer_number = customer_number;
     }
 
-    public List<Order> getOrderList() {
-        return orderList;
+    public List<Orders> getOrderList() {
+        return ordersList;
     }
 
-    public void setOrderList(List<Order> orderList) {
-        this.orderList = orderList;
+    public void setOrderList(List<Orders> ordersList) {
+        this.ordersList = ordersList;
     }
 
     @Override
@@ -88,7 +88,7 @@ public class Customer {
                 ", customer_name='" + customer_name + '\'' +
                 ", customer_address='" + customer_address + '\'' +
                 ", customer_number='" + customer_number + '\'' +
-                ", orderList=" + orderList +
+                ", ordersList=" + ordersList +
                 '}';
     }
 }

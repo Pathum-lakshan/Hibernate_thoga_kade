@@ -12,9 +12,13 @@ import org.hibernate.annotations.CreationTimestamp;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
-public class Order {
+public class Orders {
     @Id
     private String order_id;
     @CreationTimestamp
@@ -22,13 +26,23 @@ public class Order {
     @ManyToOne
     private Customer order_customer;
 
-    public Order() {
+    @OneToMany(mappedBy = "orderDetail_orders")
+    private List<OrderDetail> orderDetailsList = new ArrayList<>();
+
+    public Orders() {
     }
 
-    public Order(String order_id, LocalDate order_date, Customer order_customer) {
+    public Orders(String order_id, LocalDate order_date, Customer order_customer) {
         this.order_id = order_id;
         this.order_date = order_date;
         this.order_customer = order_customer;
+    }
+
+    public Orders(String order_id, LocalDate order_date, Customer order_customer, List<OrderDetail> orderDetailsList) {
+        this.order_id = order_id;
+        this.order_date = order_date;
+        this.order_customer = order_customer;
+        this.orderDetailsList = orderDetailsList;
     }
 
     public String getOrder_id() {
@@ -55,12 +69,21 @@ public class Order {
         this.order_customer = order_customer;
     }
 
+    public List<OrderDetail> getOrderDetailsList() {
+        return orderDetailsList;
+    }
+
+    public void setOrderDetailsList(List<OrderDetail> orderDetailsList) {
+        this.orderDetailsList = orderDetailsList;
+    }
+
     @Override
     public String toString() {
-        return "Order{" +
+        return "Orders{" +
                 "order_id='" + order_id + '\'' +
                 ", order_date=" + order_date +
                 ", order_customer=" + order_customer +
+                ", orderDetailsList=" + orderDetailsList +
                 '}';
     }
 }
