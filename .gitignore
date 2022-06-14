@@ -1,0 +1,12 @@
+# Package Files #
+*.war
+*.ear
+
+#Gradle temporary files
+target/
+
+#IntelliJ files
+**/*.iml
+**/.idea
+**/.gradle
+/out
