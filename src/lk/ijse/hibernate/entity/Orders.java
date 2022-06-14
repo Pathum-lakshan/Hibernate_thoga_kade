@@ -32,6 +32,11 @@ public class Orders {
     public Orders() {
     }
 
+    public Orders(String order_id, Customer order_customer) {
+        this.order_id = order_id;
+        this.order_customer = order_customer;
+    }
+
     public Orders(String order_id, LocalDate order_date, Customer order_customer) {
         this.order_id = order_id;
         this.order_date = order_date;
