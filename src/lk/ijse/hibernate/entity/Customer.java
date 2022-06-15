@@ -8,6 +8,7 @@
 package lk.ijse.hibernate.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
@@ -20,7 +21,7 @@ public class Customer {
     private String customer_name;
     private String customer_address;
     private String customer_number;
-    @OneToMany(mappedBy = "order_customer")
+    @OneToMany(mappedBy = "order_customer" ,fetch = FetchType.LAZY)
     private List<Orders> ordersList = new ArrayList<>();
 
     public Customer() {
@@ -39,6 +40,11 @@ public class Customer {
         this.customer_address = customer_address;
         this.customer_number = customer_number;
         this.ordersList = ordersList;
+    }
+
+    public Customer(String customer_id, String customer_address) {
+        this.customer_id = customer_id;
+        this.customer_address = customer_address;
     }
 
     public String getCustomer_id() {
