@@ -23,12 +23,31 @@ public class Main {
         Orders order3 = new Orders("OR-003",customer2);
         Orders order4 = new Orders("OR-004",customer2);
 
+        customer1.getOrderList().add(order1);
+        customer1.getOrderList().add(order2);
+        customer2.getOrderList().add(order3);
+        customer2.getOrderList().add(order4);
+
         OrderDetail orderDetail1 = new OrderDetail("OD-001", order1, item1, 15, item1.getItem_unitPrice());
         OrderDetail orderDetail2 = new OrderDetail("OD-002", order1, item1, 2, item1.getItem_unitPrice());
         OrderDetail orderDetail3 = new OrderDetail("OD-003", order1, item2, 17, item2.getItem_unitPrice());
         OrderDetail orderDetail4 = new OrderDetail("OD-004", order2, item2, 5, item2.getItem_unitPrice());
         OrderDetail orderDetail5 = new OrderDetail("OD-005", order2, item1, 7, item1.getItem_unitPrice());
         OrderDetail orderDetail6 = new OrderDetail("OD-006", order2, item2, 3, item2.getItem_unitPrice());
+
+        item1.getOrderDetailsList().add(orderDetail1);
+        item1.getOrderDetailsList().add(orderDetail2);
+        item1.getOrderDetailsList().add(orderDetail5);
+        item2.getOrderDetailsList().add(orderDetail3);
+        item2.getOrderDetailsList().add(orderDetail4);
+        item2.getOrderDetailsList().add(orderDetail6);
+
+        order1.getOrderDetailsList().add(orderDetail1);
+        order1.getOrderDetailsList().add(orderDetail2);
+        order1.getOrderDetailsList().add(orderDetail3);
+        order2.getOrderDetailsList().add(orderDetail4);
+        order2.getOrderDetailsList().add(orderDetail5);
+        order2.getOrderDetailsList().add(orderDetail6);
 
         Session session = FactoryConfiguration.getInstance().getSession();
 
@@ -180,12 +199,6 @@ public class Main {
         session.delete(session.get(OrderDetail.class,"OD-005"));
 
 //---------------------------------------------------------------------------------------------------------------------------------------------
-
-
-
-        Ghh ghh = new Ghh(4);
-
-        System.out.println(ghh);
 
 
 
